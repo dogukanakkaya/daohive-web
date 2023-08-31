@@ -3,6 +3,7 @@ import { tw } from "twind";
 
 export enum Variant {
   Primary = "bg-primary text-white",
+  Secondary = "bg-gray-800 text-white", // @todo
 }
 
 interface Props {

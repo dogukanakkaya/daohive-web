@@ -28,7 +28,7 @@ export default function Header() {
           </ul>
           <ul class="flex gap-4">
             <li>
-              <Button variant={Variant.Primary}>Platform</Button>
+              <Button variant={Variant.Primary} class="text-lg">Platform</Button>
             </li>
           </ul>
         </div>
