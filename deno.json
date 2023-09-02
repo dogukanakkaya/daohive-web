@@ -20,8 +20,7 @@
   },
   "fmt": {
     "exclude": [
-      "_fresh",
-      "deno.json"
+      "_fresh"
     ]
   },
   "imports": {
