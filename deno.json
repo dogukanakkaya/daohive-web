@@ -21,7 +21,8 @@
   "fmt": {
     "exclude": [
       "_fresh"
-    ]
+    ],
+    "lineWidth": 180
   },
   "imports": {
     "@/": "./",

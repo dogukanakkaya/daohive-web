@@ -10,13 +10,25 @@ export default function Header() {
           <h1 class="text-3xl font-semibold">daohive</h1>
         </div>
         <input id="mobile-menu" class="hidden is-checked:sibling:translate-x-0" type="checkbox" />
-        <nav class={tw(`top-[${tw.theme('spacing.20')}] left-0 h-[calc(100vh-${tw.theme('spacing.20')})] w-full absolute transition transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:(static flex w-auto h-auto bg-none translate-x-0)`)}>
+        <nav
+          class={tw(
+            `top-[${tw.theme("spacing.20")}] left-0 h-[calc(100vh-${
+              tw.theme("spacing.20")
+            })] w-full absolute transition transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:(static flex w-auto h-auto bg-none translate-x-0)`,
+          )}
+        >
           <ul class="flex flex-col md:flex-row gap-4">
-            <li><a href="#" class="nav-link">Proposals</a></li>
-            <li><a href="#" class="nav-link">Docs</a></li>
+            <li>
+              <a href="#" class="nav-link">Proposals</a>
+            </li>
+            <li>
+              <a href="#" class="nav-link">Docs</a>
+            </li>
           </ul>
           <ul class="flex gap-4 mt-4 px-4 md:(mt-0 px-0)">
-            <li><Button variant={Variant.Primary} class="text-lg">Platform</Button></li>
+            <li>
+              <Button variant={Variant.Primary} class="text-lg">Platform</Button>
+            </li>
           </ul>
         </nav>
         <label for="mobile-menu" class="md:hidden">

@@ -8,7 +8,8 @@ const faq = Object.freeze([
   },
   {
     title: "Do I have to pay?",
-    content: "You only pay for what you do. Preload a desired balance and pay for **transaction fees** when you deploy contracts, add proposals, change your whitelist. **No subscription!**",
+    content:
+      "You only pay for what you do. Preload a desired balance and pay for **transaction fees** when you deploy contracts, add proposals, change your whitelist. **No subscription!**",
   },
 ]);
 

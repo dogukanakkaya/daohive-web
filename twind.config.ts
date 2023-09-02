@@ -1,6 +1,6 @@
 import { Options } from "$fresh/plugins/twind.ts";
 import { apply } from "twind";
-import { gray } from 'twind/colors'
+import { gray } from "twind/colors";
 
 export default {
   selfURL: import.meta.url,
@@ -9,13 +9,13 @@ export default {
       "url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap')",
       "url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css')",
     ],
-    ':root': {
-      "--bg-header": gray['50'],
+    ":root": {
+      "--bg-header": gray["50"],
     },
     "@media (prefers-color-scheme: dark)": {
       ":root": {
         "--bg-header": "#040a15",
-      }
+      },
     },
     body: apply`text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-[#070d19]`,
     ".nav-link": apply`block font-semibold text-lg px-4 py-2 transition hover:text-primary`,
