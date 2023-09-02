@@ -15,7 +15,7 @@ const faq = Object.freeze([
 
 function Faq() {
   return (
-    <section class="mt-20 grid place-items-center">
+    <section class="mt-20 grid place-items-center px-6">
       <Head>
         <style dangerouslySetInnerHTML={{ __html: CSS }} />
       </Head>

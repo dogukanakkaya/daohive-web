@@ -3,12 +3,12 @@ import Button, { Variant } from "@/components/Button.tsx";
 export default function Journey() {
   return (
     <section class="mt-20 py-10">
-      <div class="flex flex-col items-center justify-center space-y-4">
-        <h3 class="text-4xl font-semibold text-white">
+      <div class="flex flex-col items-center justify-center space-y-4 text-center md:text-left px-6">
+        <h3 class="text-2xl md:text-4xl font-semibold dark:text-white">
           Begin your <span className="text-gradient-primary">DAO</span>{" "}
           journey today
         </h3>
-        <p class="text-xl text-white">
+        <p class="md:text-xl dark:text-white">
           Embrace the new era of decentralized governance and active community
           participation.
         </p>

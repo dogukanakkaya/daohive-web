@@ -2,7 +2,7 @@ import TraitBox from "@/components/Home/TraitBox.tsx";
 
 export default function Traits() {
   return (
-    <section class="grid grid-cols-2 sm:grid-cols-4 divide-x dark:divide-gray-700 mt-10">
+    <section class="grid sm:grid-cols-2 lg:grid-cols-4 mt-10">
       <TraitBox title="Permanent" icon="infinity">
         <p class="text-sm">
           Unlike traditional entities that can dissolve or fade, DAOs exist

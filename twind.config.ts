@@ -26,4 +26,7 @@ export default {
       },
     },
   },
+  variants: {
+    "not-last": "&:not(:last-child)",
+  },
 } as Options;

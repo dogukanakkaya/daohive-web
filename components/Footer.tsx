@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer class="container mx-auto flex justify-between items-center h-20 mt-20">
+    <footer class="container mx-auto flex flex-col flex-col-reverse md:flex-row gap-6 justify-between items-center md:h-20 mt-20 mb-5 md:mb-0">
       <p>All Rights Reserved © {new Date().getFullYear()}</p>
       <ul class="flex items-center divide-x dark:divide-gray-700">
         <li>
@@ -16,17 +16,17 @@ export default function Footer() {
       <ul class="flex items-center gap-4">
         <li>
           <a href="#">
-            <i class="bi bi-github"></i>
+            <i class="bi bi-github text-xl"></i>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="bi bi-discord"></i>
+            <i class="bi bi-discord text-xl"></i>
           </a>
         </li>
         <li>
           <a href="#">
-            <i class="bi bi-envelope-at"></i>
+            <i class="bi bi-envelope-at text-xl"></i>
           </a>
         </li>
       </ul>
