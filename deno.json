@@ -24,6 +24,7 @@
     ]
   },
   "imports": {
+    "@/": "./",
     "$fresh/": "https://deno.land/x/fresh@1.4.2/",
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
@@ -33,7 +34,7 @@
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
-    "@/": "./"
+    "$gfm": "https://deno.land/x/gfm@0.2.5/mod.ts"
   },
   "compilerOptions": {
     "jsx": "react-jsx",

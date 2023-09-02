@@ -14,21 +14,17 @@ export default function Header() {
         <div class="flex gap-8">
           <ul class="flex gap-4">
             <li>
-              <a href="#" class="nav-link">Features</a>
-            </li>
-            <li>
-              <a href="#" class="nav-link">Pricing</a>
+              <a href="#" class="nav-link">Proposals</a>
             </li>
             <li>
               <a href="#" class="nav-link">Docs</a>
             </li>
-            <li>
-              <a href="#" class="nav-link">FAQ</a>
-            </li>
           </ul>
           <ul class="flex gap-4">
             <li>
-              <Button variant={Variant.Primary} class="text-lg">Platform</Button>
+              <Button variant={Variant.Primary} class="text-lg">
+                Platform
+              </Button>
             </li>
           </ul>
         </div>
