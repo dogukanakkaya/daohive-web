@@ -11,17 +11,9 @@ interface Props {
   variant?: Variant;
 }
 
-export default function Button(
-  { children, variant = Variant.Primary, ...rest }:
-    & Props
-    & ComponentProps<"button">,
-) {
+export default function Button({ children, variant = Variant.Primary, ...rest }: & Props & ComponentProps<"button">) {
   const { class: className, ...restAttributes } = rest;
-  const _class = tw(
-    "button",
-    variant,
-    className as string,
-  );
+  const _class = tw("button", variant, className as string);
 
   return <button class={_class} {...restAttributes}>{children}</button>;
 }
