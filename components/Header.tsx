@@ -14,12 +14,12 @@ export default function Header() {
           class={tw(
             `top-[${tw.theme("spacing.20")}] left-0 h-[calc(100vh-${
               tw.theme("spacing.20")
-            })] w-full absolute transition transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:(static flex w-auto h-auto bg-none translate-x-0)`,
+            })] w-full absolute transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:(static flex w-auto h-auto bg-none translate-x-0)`,
           )}
         >
           <ul class="flex flex-col md:flex-row gap-4">
             <li>
-              <a href="#" class="nav-link">Proposals</a>
+              <a href="/proposals" class="nav-link">Proposals</a>
             </li>
             <li>
               <a href="#" class="nav-link">Docs</a>

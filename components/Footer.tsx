@@ -1,6 +1,6 @@
 export default function Footer() {
   return (
-    <footer class="container mx-auto flex flex-col flex-col-reverse gap-6 justify-between items-center mt-20 mb-5 md:(flex-row h-20 mb-0)">
+    <footer class="container mx-auto flex flex-col flex-col-reverse gap-6 justify-between items-center mt-20 mb-5 px-6 md:(flex-row h-20 mb-0)">
       <p>All Rights Reserved © {new Date().getFullYear()}</p>
       <ul class="flex items-center divide-x dark:divide-gray-700">
         <li>
