@@ -1,15 +1,15 @@
 import { Handlers } from "$fresh/server.ts";
 import { meilisearch } from "@/utils/meilisearch.ts";
 import ProposalList from "@/islands/ProposalList.tsx";
+import { Proposal } from "platform-api/src/utils/meilisearch/types.ts";
 
 interface HandlerData {
-  // deno-lint-ignore no-explicit-any
-  proposals: any[]; // @todo
+  proposals: Proposal[];
 }
 
 export const handler: Handlers<HandlerData> = {
   async GET(_req, ctx) {
-    const { results } = await meilisearch.index("proposals").getDocuments({ limit: 30 });
+    const { results } = await meilisearch.index("proposals").getDocuments<Proposal>({ limit: 30 });
     return ctx.render({ proposals: results });
   },
 };

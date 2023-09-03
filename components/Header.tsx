@@ -5,10 +5,10 @@ export default function Header() {
   return (
     <div class="bg-header sticky top-0 shadow">
       <header class="container mx-auto flex items-center justify-between h-20 px-6">
-        <div class="flex items-center gap-4 mr-20">
+        <a class="flex items-center gap-4 mr-20" href="/">
           <img src="https://fresh.deno.dev/logo.svg?__frsh_c=30f6c694a16b12b2ef3fbaf7d026e2dfb30e9852" alt="" />
           <h1 class="text-3xl font-semibold">daohive</h1>
-        </div>
+        </a>
         <input id="mobile-menu" class="hidden is-checked:sibling:translate-x-0" type="checkbox" />
         <nav
           class={tw(

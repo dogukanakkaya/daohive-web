@@ -1,9 +1,9 @@
 import { useEffect, useState } from "preact/hooks";
 import Time from "@/components/Proposals/Time.tsx";
+import { Proposal } from "platform-api/src/utils/meilisearch/types.ts";
 
 interface Props {
-  // deno-lint-ignore no-explicit-any
-  proposals: any[]; // @todo
+  proposals: Proposal[];
 }
 
 export default function ProposalList({ proposals: _proposals }: Props) {
@@ -86,7 +86,7 @@ export default function ProposalList({ proposals: _proposals }: Props) {
             </div>
             <div>
               <h1>
-                <a href="#" class="text-2xl text-white font-semibold">{proposal.metadata.name}</a>
+                <a href={`/proposals/${proposal.address}`} class="text-2xl text-white font-semibold">{proposal.metadata.name}</a>
               </h1>
               <p class="mt-2 text-[#8bacda]">{proposal.metadata.description}</p>
             </div>
