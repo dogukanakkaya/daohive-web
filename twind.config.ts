@@ -35,7 +35,7 @@ export default {
       colors: {
         "primary": "#431fd9",
         "header": "var(--bg-header)",
-        "proposal": "#14253d"
+        "proposal": "#14253d",
       },
     },
   },

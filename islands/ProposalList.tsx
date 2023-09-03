@@ -95,7 +95,9 @@ export default function ProposalList({ proposals: _proposals }: Props) {
                 Private <i class="bi bi-shield-check ml-2"></i>
               </span>
               <Time startAt={proposal.startAt * 1000} endAt={proposal.endAt * 1000} />
-              <a href={`/proposals/${proposal.address}`} target="_blank" class="flex items-center justify-center w-1/3 h-16 bg-primary rounded-xl cursor-pointer">Read more <i class="bi bi-box-arrow-in-up-right ml-1"></i></a>
+              <a href={`/proposals/${proposal.address}`} target="_blank" class="flex items-center justify-center w-1/3 h-16 bg-primary rounded-xl cursor-pointer">
+                Read more <i class="bi bi-box-arrow-in-up-right ml-1"></i>
+              </a>
             </div>
           </div>
         ))}

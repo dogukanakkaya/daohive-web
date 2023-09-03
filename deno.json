@@ -5,7 +5,8 @@
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "build": "deno run -A dev.ts build",
     "preview": "deno run -A main.ts",
-    "update": "deno run -A -r https://fresh.deno.dev/update ."
+    "update": "deno run -A -r https://fresh.deno.dev/update .",
+    "githooks": "deno run --allow-read --allow-write https://deno.land/x/githooks/githooks.ts"
   },
   "lint": {
     "rules": {
@@ -42,5 +43,8 @@
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "githooks": {
+    "pre-commit": "check"
   }
 }

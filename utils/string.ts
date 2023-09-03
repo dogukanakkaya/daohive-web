@@ -15,5 +15,5 @@ export const timeToHumanReadable = (time: number) => {
   if (minutes > 0) parts.push(`${minutes}m`);
   if (seconds > 0) parts.push(`${seconds}s`);
 
-  return parts.slice(0, 2).join(' ');
-}
+  return parts.slice(0, 2).join(" ");
+};
