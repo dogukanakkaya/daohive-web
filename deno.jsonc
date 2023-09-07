@@ -28,7 +28,7 @@
   "imports": {
     "@/": "./",
     "@config": "./config.ts",
-    "$fresh/": "https://deno.land/x/fresh@1.4.2/",
+    "$fresh/": "https://deno.land/x/fresh@1.4.3/",
     "preact": "https://esm.sh/preact@10.15.1",
     "preact/": "https://esm.sh/preact@10.15.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
@@ -39,7 +39,7 @@
     "$std/": "https://deno.land/std@0.193.0/",
     "$gfm": "https://deno.land/x/gfm@0.2.5/mod.ts",
     "meilisearch": "https://esm.sh/meilisearch@0.34.1",
-    "platform-api/": "https://raw.githubusercontent.com/dogukanakkaya/daohive-platform-api/main/"
+    "platform-api/": "./platform-api/" // https://raw.githubusercontent.com/dogukanakkaya/daohive-platform-api/main/
   },
   "compilerOptions": {
     "jsx": "react-jsx",
