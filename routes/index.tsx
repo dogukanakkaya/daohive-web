@@ -2,6 +2,7 @@ import Faq from "@/components/Home/Sections/Faq.tsx";
 import Traits from "@/components/Home/Sections/Traits.tsx";
 import Journey from "@/components/Home/Sections/Journey.tsx";
 import Features from "@/components/Home/Sections/Features.tsx";
+import { WEBVIEW_URL } from "@config";
 
 export default function Home() {
   return (
@@ -16,7 +17,7 @@ export default function Home() {
           </p>
         </div>
         <div class="w-full h-[550px] md:h-[800px]">
-          <iframe src="http://localhost:5500" width="100%" height="100%" />
+          <iframe src={WEBVIEW_URL} width="100%" height="100%" />
         </div>
       </section>
       <Traits />

@@ -1,5 +1,6 @@
 import Button, { Variant } from "@/components/Button.tsx";
 import { tw } from "twind";
+import { PLATFORM_URL } from "@config";
 
 export default function Header() {
   return (
@@ -27,7 +28,11 @@ export default function Header() {
           </ul>
           <ul class="flex gap-4 mt-4 px-4 md:(mt-0 px-0)">
             <li>
-              <Button variant={Variant.Primary} class="text-lg">Platform</Button>
+              <a href={PLATFORM_URL} target="_blank">
+                <Button variant={Variant.Primary} class="text-lg">
+                  Platform
+                </Button>
+              </a>
             </li>
           </ul>
         </nav>

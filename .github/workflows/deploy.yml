@@ -18,6 +18,8 @@ env:
   DENO_AUTH_TOKENS: ${{ secrets.DENO_AUTH_TOKENS }}
   MEILI_HOST: ${{ vars.MEILI_HOST }}
   MEILI_MASTER_KEY: ${{ secrets.MEILI_MASTER_KEY }}
+  WEBVIEW_URL: ${{ vars.WEBVIEW_URL }}
+  PLATFORM_URL: ${{ vars.PLATFORM_URL }}
   
 jobs:
   deploy:

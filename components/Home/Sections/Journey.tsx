@@ -1,4 +1,5 @@
 import Button, { Variant } from "@/components/Button.tsx";
+import { PLATFORM_URL } from "@config";
 
 export default function Journey() {
   return (
@@ -10,7 +11,11 @@ export default function Journey() {
         <p class="md:text-xl dark:text-white">Embrace the new era of decentralized governance and active community participation.</p>
       </div>
       <div class="flex justify-center gap-4 mt-8">
-        <Button class="w-max">Use Platform</Button>
+        <a href={PLATFORM_URL} target="_blank">
+          <Button class="w-max">
+            Use Platform
+          </Button>
+        </a>
         <Button variant={Variant.Secondary} class="w-max">Documentation</Button>
       </div>
     </section>
