@@ -59,7 +59,7 @@ export default function Layout({ Component, url }: LayoutProps) {
   const nextLink = activeLinkIndex !== -1 ? links[activeLinkIndex + 1] : undefined;
 
   return (
-    <div class="md:px-6">
+    <div class="px-6">
       <div className="md:grid grid-cols-6 gap-8">
         <div className="hidden md:block col-span-1">
           <div className="sticky top-28">
@@ -81,7 +81,7 @@ export default function Layout({ Component, url }: LayoutProps) {
           <Component />
         </div>
       </div>
-      <div className="px-6 flex justify-between md:hidden">
+      <div className="flex justify-between mt-4 md:hidden">
         <span>
           {prevLink && (
             <a href={prevLink.href} class="text-lg">

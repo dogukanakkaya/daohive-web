@@ -86,7 +86,7 @@ export default function ProposalList({ proposals: _proposals }: Props) {
             </div>
             <div>
               <h1>
-                <a href={`/proposals/${proposal.address}`} class="text-2xl dark:text-white font-semibold">{proposal.metadata.name}</a>
+                <a href={`/contracts/${proposal.address}/proposals/${proposal.id}`} class="text-2xl dark:text-white font-semibold">{proposal.metadata.name}</a>
               </h1>
               <p class="mt-2 dark:text-[#8bacda]">{proposal.metadata.description}</p>
             </div>
@@ -94,8 +94,12 @@ export default function ProposalList({ proposals: _proposals }: Props) {
               <span class="flex items-center justify-center w-1/3 h-16 bg-gray-200 dark:bg-gray-900 hover:bg-opacity-50 rounded-xl cursor-pointer">
                 Private <i class="bi bi-shield-check ml-2"></i>
               </span>
-              <Time startAt={proposal.startAt * 1000} endAt={proposal.endAt * 1000} />
-              <a href={`/proposals/${proposal.address}`} target="_blank" class="flex items-center justify-center w-1/3 h-16 text-gray-300 bg-primary rounded-xl cursor-pointer">
+              <Time class="w-1/3 h-16 cursor-pointer" startAt={proposal.startAt * 1000} endAt={proposal.endAt * 1000} />
+              <a
+                href={`/contracts/${proposal.address}/proposals/${proposal.id}`}
+                target="_blank"
+                class="flex items-center justify-center w-1/3 h-16 text-gray-300 bg-primary rounded-xl cursor-pointer"
+              >
                 Read more <i class="bi bi-box-arrow-in-up-right ml-1"></i>
               </a>
             </div>

@@ -20,13 +20,12 @@ export const handler: Handlers = {
 };
 
 export default function Doc({ params }: PageProps) {
-  if (!(params.doc in sections)) return;
   return (
     <div
       data-color-mode="auto"
       data-light-theme="light"
       data-dark-theme="dark"
-      className="markdown-body bg-transparent! px-6 pb-4"
+      className="markdown-body bg-transparent!"
       dangerouslySetInnerHTML={{ __html: render(sections[params.doc as keyof typeof sections]) }}
     />
   );

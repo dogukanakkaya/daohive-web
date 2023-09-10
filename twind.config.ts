@@ -32,6 +32,9 @@ export default {
     "#mobile-menu:checked ~ [for=mobile-menu] span:nth-child(1)": apply`-rotate-45 translate-y-2.5`,
     "#mobile-menu:checked ~ [for=mobile-menu] span:nth-child(2)": apply`rotate-45`,
     "#mobile-menu:checked ~ [for=mobile-menu] span:nth-child(3)": apply`hidden`,
+    ".no-anchor": {
+      ".anchor": apply`hidden`,
+    },
   }),
   theme: {
     fontFamily: {
