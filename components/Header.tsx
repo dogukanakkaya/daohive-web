@@ -23,7 +23,7 @@ export default function Header() {
               <a href="/proposals" class="nav-link">Proposals</a>
             </li>
             <li>
-              <a href="#" class="nav-link">Docs</a>
+              <a href="/docs" class="nav-link">Docs</a>
             </li>
           </ul>
           <ul class="flex gap-4 mt-4 px-4 md:(mt-0 px-0)">
