@@ -33,7 +33,7 @@ export default function ProposalList({ proposals: _proposals }: Props) {
 
   return (
     <main>
-      <div class="flex gap-4 px-6 mb-8">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-4 px-6 mb-8">
         <div className="relative flex-grow">
           <span class="absolute top-1/2 -translate-y-1/2 left-4">
             <i class="bi bi-search"></i>
