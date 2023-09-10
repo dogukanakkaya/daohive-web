@@ -18,6 +18,12 @@ To access our API, you will need an <a href="https://platform.daohive.io/develop
 authorization. <a href="https://platform.daohive.io/developer/api" target="_blank">You can obtain an API key from our platform</a>, which provides a seamless way to generate and
 manage keys for your applications.
 
+You just need to send that token in every request as a **Bearer** token.
+
+```
+Authorization: Bearer ${API_KEY}
+```
+
 ### Rate Limiting
 
 For the stability and fairness of our service, we have implemented **rate limiting**. Each user is limited to **15 requests per second (req/s)** to ensure that the platform remains
