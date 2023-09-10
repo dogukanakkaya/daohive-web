@@ -6,7 +6,7 @@ export default {
   selfURL: import.meta.url,
   preflight: {
     "@import": [
-      "url('https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap')",
+      "url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap')",
       "url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css')",
     ],
     ":root": {
@@ -29,7 +29,7 @@ export default {
   },
   theme: {
     fontFamily: {
-      sans: ["Quicksand", "sans-serif"],
+      sans: ["Nunito", "sans-serif"],
     },
     extend: {
       colors: {
