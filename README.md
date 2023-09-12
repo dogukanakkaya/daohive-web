@@ -1,15 +1,7 @@
-# Fresh project
+# daohive-web
 
-Your new Fresh project is ready to go. You can follow the Fresh "Getting Started" guide here: https://fresh.deno.dev/docs/getting-started
+## Project Setup
 
-### Usage
-
-Make sure to install Deno: https://deno.land/manual/getting_started/installation
-
-Then start the project:
-
-```
-deno task start
-```
-
-This will watch the project directory and restart as necessary.
+- Run `cp .env.example .env` and fill the necessary environment variables in `.env.local` file
+- Run `deno task githooks` to create hook files
+- Run `deno task start` to start the local server
