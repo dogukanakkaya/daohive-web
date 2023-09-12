@@ -1,5 +1,3 @@
-export const DENO_ENV = (Deno.env.get("DENO_ENV") || "development") as "development" | "production";
-
 export const POLYGON_MUMBAI_RPC_PROVIDER = Deno.env.get("POLYGON_MUMBAI_RPC_PROVIDER")!;
 
 export const MEILI_HOST = Deno.env.get("MEILI_HOST")!;
