@@ -4,7 +4,7 @@ import { PLATFORM_URL } from "@config";
 
 export default function Header() {
   return (
-    <div class="bg-header sticky top-0 shadow">
+    <div class="bg-header sticky top-0 shadow z-10">
       <header class="container mx-auto flex items-center justify-between h-20 px-6">
         <a class="flex items-center gap-4 mr-20" href="/">
           <img src="https://fresh.deno.dev/logo.svg?__frsh_c=30f6c694a16b12b2ef3fbaf7d026e2dfb30e9852" alt="" />
