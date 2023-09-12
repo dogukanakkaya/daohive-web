@@ -43,7 +43,7 @@ export default function ProposalList({ proposals: _proposals }: Props) {
             value={search}
             onInput={(e) => setSearch((e.target as HTMLInputElement).value)}
             name="search"
-            class="w-full pl-10 pr-4 py-3 dark:bg-gray-800 rounded-lg focus:outline-none dark:hover:bg-proposal"
+            class="pl-10 pr-4 py-3 w-full min-h-[3rem] dark:bg-gray-800 rounded-lg appearance-none focus:outline-none dark:hover:bg-proposal"
             type="search"
             placeholder="Search proposals, contracts"
           />
@@ -56,7 +56,7 @@ export default function ProposalList({ proposals: _proposals }: Props) {
           <input
             value={filters.startAt}
             onInput={(e) => setFilters({ ...filters, startAt: (e.target as HTMLInputElement).value })}
-            class="w-full pl-10 pr-4 py-3 dark:bg-gray-800 rounded-lg focus:outline-none dark:hover:bg-proposal"
+            class="pl-10 pr-4 py-3 w-full min-h-[3rem] dark:bg-gray-800 rounded-lg appearance-none focus:outline-none dark:hover:bg-proposal"
             type="datetime-local"
             placeholder="Search proposals, contracts"
           />
@@ -69,13 +69,13 @@ export default function ProposalList({ proposals: _proposals }: Props) {
           <input
             value={filters.endAt}
             onInput={(e) => setFilters({ ...filters, endAt: (e.target as HTMLInputElement).value })}
-            class="w-full pl-10 pr-4 py-3 dark:bg-gray-800 rounded-lg focus:outline-none dark:hover:bg-proposal"
+            class="pl-10 pr-4 w-full min-h-[3rem] dark:bg-gray-800 rounded-lg appearance-none focus:outline-none dark:hover:bg-proposal"
             type="datetime-local"
             placeholder="Search proposals, contracts"
           />
         </div>
       </div>
-      <div class="grid md:grid-cols-3 gap-8 px-6">
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
         {proposals.map((proposal) => <Card proposal={proposal} />)}
       </div>
     </main>

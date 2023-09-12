@@ -24,6 +24,7 @@ export default {
       ...preflight["html"] as CSSRules,
     },
     body: apply`text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-[#070d19]`,
+    "summary::-webkit-details-marker": apply`hidden`,
     ".nav-link": apply`block font-semibold text-lg px-4 py-2 transition hover:text-primary`,
     ".button": apply`py-2 px-6 rounded-lg font-medium w-full hover:opacity-90 focus:outline-none`,
     ".text-gradient-primary": apply`text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400`,

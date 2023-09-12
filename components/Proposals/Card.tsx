@@ -8,7 +8,7 @@ export default function Card({ proposal }: { proposal: Proposal }) {
         <img
           src="https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80"
           class="rounded-xl"
-          alt=""
+          alt={proposal.metadata.name}
         />
       </div>
       <div>
@@ -17,8 +17,8 @@ export default function Card({ proposal }: { proposal: Proposal }) {
         </h1>
         <p class="mt-2 dark:text-[#8bacda]">{proposal.metadata.description}</p>
       </div>
-      <div class="flex flex-col sm:flex-row gap-4">
-        <div class="flex gap-4 w-full sm:w-2/3">
+      <div class="flex flex-col gap-4">
+        <div class="flex gap-4 w-full">
           <span class="flex items-center justify-center w-1/2 h-16 bg-gray-200 dark:bg-gray-900 hover:bg-opacity-50 rounded-xl cursor-pointer">
             Private <i class="bi bi-shield-check ml-2"></i>
           </span>
@@ -27,7 +27,7 @@ export default function Card({ proposal }: { proposal: Proposal }) {
         <a
           href={`/contracts/${proposal.address}/proposals/${proposal.id}`}
           target="_blank"
-          class="flex items-center justify-center sm:w-1/3 h-16 text-gray-300 bg-primary rounded-xl cursor-pointer"
+          class="flex items-center justify-center h-16 text-gray-300 bg-primary rounded-xl cursor-pointer"
         >
           Read more <i class="bi bi-box-arrow-in-up-right ml-1"></i>
         </a>
