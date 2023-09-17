@@ -14,6 +14,7 @@ type Contract {
   activeProposalCount: BigInt!
   createdAt: String!
   voters: [String!]!
+  weights: JSONObject!
   proposals: [Proposal!]!
 }
 
@@ -35,12 +36,18 @@ input SetWeightsInput {
   weights: [Int!]!
 }
 
+input DeleteWeightsInput {
+  address: String!
+  voters: [String!]!
+}
+
 type Query {
   contract(address: String!): Contract!
   preDeployContract(input: DeployContractInput!): PreCalculation!
   preAddToWhitelist(input: WhitelistInput!): PreCalculation!
   preRemoveFromWhitelist(input: WhitelistInput!): PreCalculation!
   preSetWeights(input: SetWeightsInput!): PreCalculation!
+  preDeleteWeights(input: DeleteWeightsInput!): PreCalculation!
 }
 
 type Mutation {
@@ -48,6 +55,7 @@ type Mutation {
   addToWhitelist(input: WhitelistInput!): Boolean!
   removeFromWhitelist(input: WhitelistInput!): Boolean!
   setWeights(input: SetWeightsInput!): Boolean!
+  deleteWeights(input: DeleteWeightsInput!): Boolean!
 }
 ```
 
@@ -111,5 +119,16 @@ You can set your voter's weights to a specific number (default is 1) by using th
 ```graphql
 mutation SetWeights ($input: SetWeightsInput!) {
   setWeights(input: $input)
+}
+```
+
+<br/>
+
+You can also your voter's weights by using the `setWeights(input: SetWeightsInput!)` mutation, see query examples below. This is the same thing as setting your voter's weight to 0
+or 1 but more gas efficient.
+
+```graphql
+mutation DeleteWeights ($input: DeleteWeightsInput!) {
+  deleteWeights(input: $input)
 }
 ```
