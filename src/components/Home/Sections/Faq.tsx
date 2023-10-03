@@ -3,7 +3,7 @@ import { marked } from 'marked'
 const faq = Object.freeze([
   {
     title: 'How to start with Daohive?',
-    content: 'TODO'
+    content: 'Start your journey by signing in to our platform. Once logged in, you\'ll have immediate access to the tools and features that enable you to add proposals, manage smart contracts, add voters, and integrate your organization\'s systems using our powerful API. It\'s as simple as that!'
   },
   {
     title: 'Do I have to pay?',
