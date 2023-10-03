@@ -29,7 +29,7 @@ const features = Object.freeze([
 
 export default function Features() {
   return (
-    <section class="mt-20 md:grid grid-cols-2 gap-20 px-6">
+    <section className="mt-20 md:grid grid-cols-2 gap-20 px-6">
       {features.map((feature) => <FeatureBox feature={feature} />)}
     </section>
   )

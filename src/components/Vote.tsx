@@ -1,6 +1,6 @@
 import Button from '@/components/Button.tsx'
 import { useMetamask } from '@/hooks/useMetamask.tsx'
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { ethers } from 'ethers'
 
 enum VoteType {

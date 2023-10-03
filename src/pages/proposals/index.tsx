@@ -2,9 +2,24 @@ import { useEffect, useState } from 'react'
 import Card from '@/components/Proposals/Card.tsx'
 import { API_URL } from '@/config'
 
+interface Proposal {
+  id: string;
+  uri: string;
+  metadata: {
+    name: string;
+    description: string;
+    content: string;
+    image: string;
+  };
+  address: string;
+  startAt: number;
+  endAt: number;
+  createdAt: string;
+}
+
 export default function Proposals() {
-  const [initialProposals, setInitialProposals] = useState([])
-  const [proposals, setProposals] = useState([])
+  const [initialProposals, setInitialProposals] = useState<Proposal[]>([])
+  const [proposals, setProposals] = useState<Proposal[]>([])
   const [search, setSearch] = useState('')
   const [filters, setFilters] = useState({
     startAt: '',
