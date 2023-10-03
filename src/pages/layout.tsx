@@ -9,6 +9,7 @@ export default function Layout() {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Daohive</title>
+        <link rel="icon" type="image/png" href="/favicon.ico" />
         <link rel="canonical" href="https://daohive.io" />
       </Helmet>
       <Header />
