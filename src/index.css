@@ -1,0 +1,64 @@
+@import url('https://fonts.googleapis.com/css2?family=Nunito:wght@300;400;500;600;700&display=swap');
+@import url('https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --bg-header: #fafafa;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg-header: #040a15;
+    }
+  }
+
+  html {
+    @apply scroll-p-24;
+  }
+
+  body {
+    @apply text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-[#070d19];
+  }
+
+  summary::-webkit-details-marker {
+    @apply hidden;
+  }
+}
+
+@layer components {
+  .nav-link {
+    @apply block font-semibold text-lg px-4 py-2 transition hover:text-primary;
+  }
+
+  .button {
+    @apply py-2 px-6 rounded-lg font-medium w-full hover:opacity-90 focus:outline-none;
+  }
+
+  .text-gradient-primary {
+    @apply text-transparent bg-clip-text bg-gradient-to-r from-primary to-indigo-400;
+  }
+
+  .mobile-line {
+    @apply w-8 h-0.5 flex mb-2 bg-black dark:bg-white rounded-sm transition-transform transform;
+  }
+
+  #mobile-menu:checked~[for=mobile-menu] span:nth-child(1) {
+    @apply -rotate-45 translate-y-2.5;
+  }
+
+  #mobile-menu:checked~[for=mobile-menu] span:nth-child(2) {
+    @apply rotate-45;
+  }
+
+  #mobile-menu:checked~[for=mobile-menu] span:nth-child(3) {
+    @apply hidden;
+  }
+
+  .no-anchor .anchor {
+    @apply hidden;
+  }
+}
