@@ -1,9 +1,4 @@
-import Prism from 'prismjs'
-import 'prismjs/components/prism-typescript'
-import 'prismjs/components/prism-graphql'
-import 'prismjs/themes/prism.min.css'
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
-import { useEffect } from 'react'
 
 const links = Object.freeze([
   {
@@ -58,10 +53,6 @@ const links = Object.freeze([
 
 export default function Docs() {
   const { id } = useParams()
-
-  useEffect(() => {
-    Prism.highlightAll()
-  }, [])
 
   const activeLinkIndex = links.findIndex((link) => link.href === `/docs/${id}`)
   const prevLink = activeLinkIndex !== -1 ? links[activeLinkIndex - 1] : undefined

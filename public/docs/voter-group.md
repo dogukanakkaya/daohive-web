@@ -1,6 +1,7 @@
 # Voter Groups
 
-This documentation outlines the functionality of the Voter Groups. The endpoint offers the following queries and mutations:
+This documentation outlines the functionality of the Voter Groups. The endpoint
+offers the following queries and mutations:
 
 ```graphql
 type VoterGroup {
@@ -31,7 +32,8 @@ type Mutation {
 
 ## Fetch
 
-You can retrieve groups/group data by using the `voterGroups()` and `voterGroup(id: ID!)` queries, see query examples below.
+You can retrieve groups/group data by using the `voterGroups()` and
+`voterGroup(id: ID!)` queries, see query examples below.
 
 ```graphql
 query VoterGroups {
@@ -53,7 +55,8 @@ query VoterGroup($id: ID!) {
 
 ## Create
 
-You can create a new group by using the `createVoterGroup(input: VoterGroupInput!)` mutation, see below query example.
+You can create a new group by using the
+`createVoterGroup(input: VoterGroupInput!)` mutation, see below query example.
 
 ```graphql
 mutation CreateVoterGroup ($input: VoterGroupInput!) {
@@ -67,7 +70,9 @@ mutation CreateVoterGroup ($input: VoterGroupInput!) {
 
 ## Update
 
-You can update a group by using the `updateVoterGroup($id: ID!, $input: VoterGroupInput!)` mutation, see below query example.
+You can update a group by using the
+`updateVoterGroup($id: ID!, $input: VoterGroupInput!)` mutation, see below query
+example.
 
 ```graphql
 mutation UpdateVoterGroup ($id: ID!, $input: VoterGroupInput!) {
@@ -81,7 +86,8 @@ mutation UpdateVoterGroup ($id: ID!, $input: VoterGroupInput!) {
 
 ## Delete
 
-You can delete a group by using the `deleteVoterGroup($id: ID!)` mutation, see below query example.
+You can delete a group by using the `deleteVoterGroup($id: ID!)` mutation, see
+below query example.
 
 ```graphql
 mutation DeleteVoterGroup ($id: ID!) {
