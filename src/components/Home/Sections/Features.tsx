@@ -2,16 +2,16 @@ import FeatureBox from '@/components/Home/FeatureBox.tsx'
 
 const features = Object.freeze([
   {
-    title: 'Add Proposals',
-    content:
-      'Empower your organization to shape its future with ease. Seamlessly submit and discuss proposals, allowing your members to voice their ideas and contribute to the collective vision. Embrace a dynamic platform that fosters innovation and inclusivity.',
-    image: '/feature-left1.png'
-  },
-  {
     title: 'Manage Smart Contracts',
     content:
       'Take command of your smart contracts effortlessly. Our platform provides you with the tools you need to manage and monitor your contracts in real-time. Ensure compliance and transparency while maintaining control over your organization\'s financial and operational integrity.',
     image: '/feature-right1.png'
+  },
+  {
+    title: 'Add Proposals',
+    content:
+      'Empower your organization to shape its future with ease. Seamlessly submit and discuss proposals, allowing your members to voice their ideas and contribute to the collective vision. Embrace a dynamic platform that fosters innovation and inclusivity.',
+    image: '/feature-left1.png'
   },
   {
     title: 'Add Voters',

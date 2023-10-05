@@ -61,4 +61,14 @@
   .no-anchor .anchor {
     @apply hidden;
   }
+
+  .loading {
+    @apply border-gray-300 dark:border-gray-800 animate-spin rounded-full border-t-primary dark:border-t-primary;
+  }
+}
+
+@layer utilities {
+  .flex-center {
+    @apply flex items-center justify-center;
+  }
 }

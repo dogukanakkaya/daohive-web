@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react'
 import Card from '@/components/Proposals/Card.tsx'
 import { API_URL } from '@/config'
 
-interface Proposal {
+export interface Proposal {
   id: string;
   uri: string;
   metadata: {
@@ -15,6 +15,7 @@ interface Proposal {
   startAt: number;
   endAt: number;
   createdAt: string;
+  type: 'VotingPrivate' | 'VotingPublic';
 }
 
 export default function Proposals() {

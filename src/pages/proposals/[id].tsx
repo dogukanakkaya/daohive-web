@@ -1,422 +1,20 @@
 import Time from '@/components/Proposals/Time.tsx'
-import { useParams } from 'react-router'
 import { marked } from 'marked'
 import { useEffect, useState } from 'react'
-import Vote from '@/components/Vote'
+import Vote, { VoteType } from '@/components/Proposals/Vote'
 import { useMetamask } from '@/hooks/useMetamask'
-
-const abi = [
-  {
-    'inputs': [
-      {
-        'internalType': 'string',
-        'name': '_name',
-        'type': 'string'
-      },
-      {
-        'internalType': 'string',
-        'name': '_description',
-        'type': 'string'
-      },
-      {
-        'internalType': 'address[]',
-        'name': '_whitelist',
-        'type': 'address[]'
-      }
-    ],
-    'stateMutability': 'nonpayable',
-    'type': 'constructor'
-  },
-  {
-    'anonymous': false,
-    'inputs': [
-      {
-        'indexed': true,
-        'internalType': 'address',
-        'name': 'previousOwner',
-        'type': 'address'
-      },
-      {
-        'indexed': true,
-        'internalType': 'address',
-        'name': 'newOwner',
-        'type': 'address'
-      }
-    ],
-    'name': 'OwnershipTransferred',
-    'type': 'event'
-  },
-  {
-    'anonymous': false,
-    'inputs': [
-      {
-        'indexed': true,
-        'internalType': 'string',
-        'name': 'proposalId',
-        'type': 'string'
-      },
-      {
-        'indexed': false,
-        'internalType': 'string',
-        'name': 'uri',
-        'type': 'string'
-      },
-      {
-        'indexed': false,
-        'internalType': 'uint256',
-        'name': 'startAt',
-        'type': 'uint256'
-      },
-      {
-        'indexed': false,
-        'internalType': 'uint256',
-        'name': 'endAt',
-        'type': 'uint256'
-      }
-    ],
-    'name': 'ProposalAdded',
-    'type': 'event'
-  },
-  {
-    'anonymous': false,
-    'inputs': [
-      {
-        'indexed': true,
-        'internalType': 'address',
-        'name': 'voter',
-        'type': 'address'
-      },
-      {
-        'indexed': true,
-        'internalType': 'string',
-        'name': 'proposalId',
-        'type': 'string'
-      },
-      {
-        'indexed': false,
-        'internalType': 'enum VotingBase.VoteType',
-        'name': 'voteType',
-        'type': 'uint8'
-      }
-    ],
-    'name': 'VoteCasted',
-    'type': 'event'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'string',
-        'name': '_proposalId',
-        'type': 'string'
-      },
-      {
-        'internalType': 'string',
-        'name': '_uri',
-        'type': 'string'
-      },
-      {
-        'internalType': 'uint256',
-        'name': '_startAt',
-        'type': 'uint256'
-      },
-      {
-        'internalType': 'uint256',
-        'name': '_endAt',
-        'type': 'uint256'
-      }
-    ],
-    'name': 'addProposal',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address[]',
-        'name': '_addresses',
-        'type': 'address[]'
-      }
-    ],
-    'name': 'addToWhitelist',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'description',
-    'outputs': [
-      {
-        'internalType': 'string',
-        'name': '',
-        'type': 'string'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'getWhitelist',
-    'outputs': [
-      {
-        'internalType': 'address[]',
-        'name': '',
-        'type': 'address[]'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'getWhitelistCount',
-    'outputs': [
-      {
-        'internalType': 'uint256',
-        'name': '',
-        'type': 'uint256'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address',
-        'name': '',
-        'type': 'address'
-      },
-      {
-        'internalType': 'string',
-        'name': '',
-        'type': 'string'
-      }
-    ],
-    'name': 'hasVotedForProposal',
-    'outputs': [
-      {
-        'internalType': 'bool',
-        'name': '',
-        'type': 'bool'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'name',
-    'outputs': [
-      {
-        'internalType': 'string',
-        'name': '',
-        'type': 'string'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'owner',
-    'outputs': [
-      {
-        'internalType': 'address',
-        'name': '',
-        'type': 'address'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'string',
-        'name': '',
-        'type': 'string'
-      }
-    ],
-    'name': 'proposals',
-    'outputs': [
-      {
-        'internalType': 'string',
-        'name': 'id',
-        'type': 'string'
-      },
-      {
-        'internalType': 'string',
-        'name': 'uri',
-        'type': 'string'
-      },
-      {
-        'internalType': 'uint256',
-        'name': 'approvalCount',
-        'type': 'uint256'
-      },
-      {
-        'internalType': 'uint256',
-        'name': 'disapprovalCount',
-        'type': 'uint256'
-      },
-      {
-        'internalType': 'uint256',
-        'name': 'neutralCount',
-        'type': 'uint256'
-      },
-      {
-        'internalType': 'uint256',
-        'name': 'startAt',
-        'type': 'uint256'
-      },
-      {
-        'internalType': 'uint256',
-        'name': 'endAt',
-        'type': 'uint256'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address[]',
-        'name': '_addresses',
-        'type': 'address[]'
-      }
-    ],
-    'name': 'removeFromWhitelist',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [],
-    'name': 'renounceOwnership',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address[]',
-        'name': '_voters',
-        'type': 'address[]'
-      },
-      {
-        'internalType': 'uint256[]',
-        'name': '_weights',
-        'type': 'uint256[]'
-      }
-    ],
-    'name': 'setWeights',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address',
-        'name': 'newOwner',
-        'type': 'address'
-      }
-    ],
-    'name': 'transferOwnership',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'string',
-        'name': '_proposalId',
-        'type': 'string'
-      },
-      {
-        'internalType': 'enum VotingBase.VoteType',
-        'name': '_voteType',
-        'type': 'uint8'
-      }
-    ],
-    'name': 'vote',
-    'outputs': [],
-    'stateMutability': 'nonpayable',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address',
-        'name': '',
-        'type': 'address'
-      }
-    ],
-    'name': 'weights',
-    'outputs': [
-      {
-        'internalType': 'uint256',
-        'name': '',
-        'type': 'uint256'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'address',
-        'name': '',
-        'type': 'address'
-      }
-    ],
-    'name': 'whitelist',
-    'outputs': [
-      {
-        'internalType': 'bool',
-        'name': '',
-        'type': 'bool'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  },
-  {
-    'inputs': [
-      {
-        'internalType': 'uint256',
-        'name': '',
-        'type': 'uint256'
-      }
-    ],
-    'name': 'whitelistAddresses',
-    'outputs': [
-      {
-        'internalType': 'address',
-        'name': '',
-        'type': 'address'
-      }
-    ],
-    'stateMutability': 'view',
-    'type': 'function'
-  }
-]
+import { getArtifact } from '@/utils/supabase'
+import { ethers } from 'ethers'
+import { useSearchParams, useParams, useNavigate } from 'react-router-dom'
 
 interface Proposal {
   id: string;
   uri: string;
-  approvalCount: number;
-  disapprovalCount: number;
-  neutralCount: number;
-  startAt: number;
-  endAt: number;
+  approvalCount: bigint;
+  disapprovalCount: bigint;
+  neutralCount: bigint;
+  startAt: bigint;
+  endAt: bigint;
 }
 
 interface Metadata {
@@ -428,13 +26,20 @@ interface Metadata {
 
 export default function Proposal() {
   const { address, id } = useParams()
+  const [searchParams] = useSearchParams()
+  const navigate = useNavigate()
   const [proposal, setProposal] = useState<Proposal>()
   const [metadata, setMetadata] = useState<Metadata>()
+  const [abi, setAbi] = useState<ethers.InterfaceAbi>()
   const { getContract } = useMetamask()
 
   useEffect(() => {
+    const type = searchParams.get('type')
+    if (!type || !address || !id) return navigate('/proposals')
+
     !async function () {
-      const contract = await getContract(address as string, abi)
+      const { abi } = await getArtifact(type)
+      const contract = await getContract(address, abi)
       const proposal = (await contract.proposals(id)).toObject()
       // const metadata: Metadata = await (await fetch(proposal.uri)).json()
       const metadata: Metadata = {
@@ -443,12 +48,19 @@ export default function Proposal() {
         content: await (await fetch('https://raw.githubusercontent.com/dogukanakkaya/permahistory/main/README.md')).text(),
         image: 'https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
       }
+      setAbi(abi)
       setProposal(proposal)
       setMetadata(metadata)
     }()
-  }, [])
+  }, [address, getContract, id, navigate, searchParams])
 
-  if (!proposal || !metadata) return <>Loading...</>
+  const handleVoteSuccess = (type: VoteType) => {
+    if (!proposal) return
+    const key = type === VoteType.Approval ? 'approvalCount' : type === VoteType.Disapproval ? 'disapprovalCount' : 'neutralCount'
+    setProposal({ ...proposal, [key]: proposal[key] + BigInt(1) })
+  }
+
+  if (!proposal || !metadata || !abi) return <Placeholder />
 
   return (
     <main className="px-6 space-y-4">
@@ -459,37 +71,68 @@ export default function Proposal() {
       <div>
         <img className="w-full max-h-[800px] object-cover rounded-xl" src={metadata.image} alt={metadata.name} />
       </div>
-      <VoteContextSection proposal={proposal} />
+      <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+        <ul className="flex gap-4">
+          <li>
+            <i className="bi bi-emoji-smile text-green-100"></i> <span className="font-bold">{Number(proposal.approvalCount)}</span> approved
+          </li>
+          <li>
+            <i className="bi bi-emoji-frown text-red-100"></i> <span className="font-bold">{Number(proposal.disapprovalCount)}</span> disapproved
+          </li>
+          <li>
+            <i className="bi bi-emoji-neutral"></i> {Number(proposal.neutralCount)} neutral
+          </li>
+        </ul>
+        <ul className="flex items-center gap-4">
+          <li>
+            <Time className="bg-transparent! px-2 py-1" startAt={Number(proposal.startAt) * 1000} endAt={Number(proposal.endAt) * 1000} />
+          </li>
+          <li>
+            <Vote id={proposal.id} abi={abi} address={address as string} handleSuccess={handleVoteSuccess} />
+          </li>
+        </ul>
+      </div>
       <div className="flex items-center justify-center">
         <div dangerouslySetInnerHTML={{ __html: marked.parse(metadata.content) }} className="w-full md:w-2/3 max-w-none my-10 prose prose-headings:border-b dark:prose-headings:border-gray-800 prose-headings:pb-3 dark:prose-invert prose-a:text-blue-600 hover:prose-a:text-blue-500" />
       </div>
-      <VoteContextSection proposal={proposal} />
     </main>
   )
 }
 
-function VoteContextSection({ proposal }: { proposal: Proposal }) {
+function Placeholder() {
   return (
-    <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
-      <ul className="flex gap-6">
-        <li>
-          <i className="bi bi-emoji-smile text-green-100"></i> <span className="font-bold">{Number(proposal.approvalCount)}</span> approved
-        </li>
-        <li>
-          <i className="bi bi-emoji-frown text-red-100"></i> <span className="font-bold">{Number(proposal.disapprovalCount)}</span> disapproved
-        </li>
-        <li>
-          <i className="bi bi-emoji-neutral"></i> {Number(proposal.neutralCount)} neutral
-        </li>
-      </ul>
-      <ul className="flex items-center gap-6">
-        <li>
-          <Time className="bg-transparent!" startAt={Number(proposal.startAt) * 1000} endAt={Number(proposal.endAt) * 1000} />
-        </li>
-        <li>
-          <Vote id={proposal.id} abi={abi} address="0x0de3928f7EfE0d1007f5be364C2a4499193aF650" />
-        </li>
-      </ul>
+    <div className="px-6 space-y-4 animate-pulse">
+      <div className="flex flex-col items-center gap-2">
+        <div className="w-1/3 h-12 bg-slate-500 dark:bg-slate-700 rounded"></div>
+        <div className="w-2/3 h-7 bg-slate-500 dark:bg-slate-700 rounded"></div>
+      </div>
+      <div className="bg-slate-500 dark:bg-slate-700 w-full h-[800px] rounded-xl"></div>
+      <div className="flex justify-between items-center mb-2">
+        <div className="flex gap-4">
+          <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
+          <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
+          <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
+        </div>
+        <div className="flex gap-4">
+          <div className="w-20 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
+          <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
+        </div>
+      </div>
+      <div className="flex-center">
+        <div className="w-full md:w-2/3 my-10">
+          <div className="w-1/3 h-5 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-2/3 h-5 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-10/12 h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-2/3 h-5 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-40 h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-3/4 h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="h-3 bg-slate-500 dark:bg-slate-700 rounded mb-2"></div>
+          <div className="w-60 h-3 bg-slate-500 dark:bg-slate-700 rounded"></div>
+        </div>
+      </div>
     </div>
   )
 }

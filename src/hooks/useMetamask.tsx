@@ -104,7 +104,7 @@ export function MetamaskProvider({ children }: { children: React.ReactNode }) {
   }
 
   async function getContract(address: string, abi: ethers.InterfaceAbi) {
-    if (!provider) {
+    if (!isMetamaskConnected || !provider) {
       const rpcProvider = new ethers.JsonRpcProvider(POLYGON_MUMBAI_RPC_URL)
       return new ethers.Contract(address, abi, rpcProvider)
     }

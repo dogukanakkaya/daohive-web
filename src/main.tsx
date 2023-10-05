@@ -34,7 +34,7 @@ const router = createBrowserRouter([
         element: <Proposals />
       },
       {
-        path: '/contracts/:address/proposals/:id',
+        path: '/:address/:id',
         element: <MetamaskProvider><Proposal /></MetamaskProvider>
       }
     ]
