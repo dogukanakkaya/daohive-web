@@ -10,8 +10,8 @@ export default function Header() {
           <img src="/logo.svg" width={60} alt="" />
           <h1 className="text-3xl font-semibold">daohive</h1>
         </Link>
-        <input id="mobile-menu" className="hidden is-checked:sibling:translate-x-0" type="checkbox" />
-        <nav className="top-[theme('spacing.20')] left-0 h-[calc(100vh-theme('spacing.20')] w-full absolute transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:static md:flex md:w-auto md:h-auto md:bg-none md:translate-x-0">
+        <input id="mobile-menu" className="hidden peer" type="checkbox" />
+        <nav className="top-[theme('spacing.20')] left-0 h-[calc(100vh-theme('spacing.20'))] w-full absolute transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:static md:flex md:w-auto md:h-auto md:bg-none md:translate-x-0 peer-checked:translate-x-0">
           <ul className="flex flex-col md:flex-row gap-4">
             <li>
               <NavLink to="/proposals" className="nav-link">Proposals</NavLink>
