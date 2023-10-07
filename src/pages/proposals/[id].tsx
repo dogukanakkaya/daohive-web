@@ -41,17 +41,13 @@ export default function Proposal() {
       const { abi } = await getArtifact(type)
       const contract = await getContract(address, abi)
       const proposal = (await contract.proposals(id)).toObject()
-      // const metadata: Metadata = await (await fetch(proposal.uri)).json()
-      const metadata: Metadata = {
-        name: 'Test proposal name',
-        description: 'Test proposal description is here',
-        content: await (await fetch('https://raw.githubusercontent.com/dogukanakkaya/permahistory/main/README.md')).text(),
-        image: 'https://images.unsplash.com/photo-1621075160523-b936ad96132a?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1170&q=80'
-      }
+      const metadata: Metadata = await (await fetch(proposal.uri)).json()
       setAbi(abi)
       setProposal(proposal)
       setMetadata(metadata)
     }()
+
+    // cleanup function to abort, this is rendered more than one time
   }, [address, getContract, id, navigate, searchParams])
 
   const handleVoteSuccess = (type: VoteType) => {
