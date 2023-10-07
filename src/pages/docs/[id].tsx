@@ -9,16 +9,21 @@ import { useParams } from 'react-router-dom'
 
 marked.use(gfmHeadingId({}))
 
+const MEMOIZED_DOCS = new Map()
+
 export default function Doc() {
   const { id } = useParams()
   const [doc, setDoc] = useState('')
 
   useEffect(() => {
     !async function () {
+      if (MEMOIZED_DOCS.has(id)) return setDoc(MEMOIZED_DOCS.get(id))
+
       const response = await fetch(`/docs/${id}.md`)
       const result = await response.text()
 
       setDoc(result)
+      MEMOIZED_DOCS.set(id, result)
     }()
   }, [id])
 
