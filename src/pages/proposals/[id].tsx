@@ -67,7 +67,7 @@ export default function Proposal() {
       <div>
         <img className="w-full max-h-[800px] object-cover rounded-xl" src={metadata.image} alt={metadata.name} />
       </div>
-      <div className="flex flex-col md:flex-row gap-4 items-center justify-between">
+      <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
         <ul className="flex gap-4">
           <li>
             <i className="bi bi-emoji-smile text-green-100"></i> <span className="font-bold">{Number(proposal.approvalCount)}</span> approved
@@ -103,7 +103,7 @@ function Placeholder() {
         <div className="w-2/3 h-7 bg-slate-500 dark:bg-slate-700 rounded"></div>
       </div>
       <div className="bg-slate-500 dark:bg-slate-700 w-full h-[800px] rounded-xl"></div>
-      <div className="flex justify-between items-center mb-2">
+      <div className="flex justify-between items-center flex-col lg:flex-row gap-4 mb-2">
         <div className="flex gap-4">
           <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>
           <div className="w-28 h-8 bg-slate-500 dark:bg-slate-700 rounded"></div>

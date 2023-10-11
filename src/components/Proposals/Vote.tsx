@@ -70,13 +70,13 @@ export default function Vote({ id, address, abi, handleSuccess }: Props) {
         ? (
           <div className="flex gap-2 text-sm max-h-[40px] whitespace-nowrap">
             <Button onClick={() => handleVote(0)} disabled={loading} className="px-3 flex-center gap-1.5">
-              Approve {voteType === 0 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-smile text-green-100" />}
+              <span className="hidden sm:block">Approve</span> {voteType === 0 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-smile text-green-100" />}
             </Button>
             <Button onClick={() => handleVote(1)} disabled={loading} className="px-3 flex-center gap-1.5">
-              Disapprove {voteType === 1 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-frown text-red-100" />}
+              <span className="hidden sm:block">Disapprove</span> {voteType === 1 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-frown text-red-100" />}
             </Button>
             <Button onClick={() => handleVote(2)} disabled={loading} className="px-3 flex-center gap-1.5">
-              Neutral {voteType === 2 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-neutral" />}
+              <span className="hidden sm:block">Neutral</span> {voteType === 2 && loading ? <div className="inline-block loading w-4 h-4 border-2 border-t-indigo-300" /> : <i className="bi bi-emoji-neutral" />}
             </Button>
           </div>
         )

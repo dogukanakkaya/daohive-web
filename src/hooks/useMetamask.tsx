@@ -99,6 +99,8 @@ export function MetamaskProvider({ children }: { children: React.ReactNode }) {
         console.error(error)
       }
     } else {
+      alert('You have to install Metamask in order to vote.')
+      window.open('https://metamask.io/download/')
       console.error('Metamask not detected')
     }
   }
