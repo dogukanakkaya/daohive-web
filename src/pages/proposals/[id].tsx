@@ -70,10 +70,10 @@ export default function Proposal() {
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
         <ul className="flex gap-4">
           <li>
-            <i className="bi bi-emoji-smile text-green-100"></i> <span className="font-bold">{Number(proposal.approvalCount)}</span> approved
+            <i className="bi bi-emoji-smile text-green-500 dark:text-green-100"></i> <span className="font-bold">{Number(proposal.approvalCount)}</span> approved
           </li>
           <li>
-            <i className="bi bi-emoji-frown text-red-100"></i> <span className="font-bold">{Number(proposal.disapprovalCount)}</span> disapproved
+            <i className="bi bi-emoji-frown text-red-500 dark:text-red-100"></i> <span className="font-bold">{Number(proposal.disapprovalCount)}</span> disapproved
           </li>
           <li>
             <i className="bi bi-emoji-neutral"></i> {Number(proposal.neutralCount)} neutral
