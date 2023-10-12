@@ -8,7 +8,7 @@ export default function Header() {
   const location = useLocation()
 
   useEffect(() => {
-    inputRef.current?.click()
+    if (inputRef.current) inputRef.current.checked = false
   }, [location])
 
   return (
