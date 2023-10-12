@@ -19,6 +19,7 @@ export interface Proposal {
 }
 
 export default function Proposals() {
+  const [loading, setLoading] = useState(false)
   const [initialProposals, setInitialProposals] = useState<Proposal[]>([])
   const [proposals, setProposals] = useState<Proposal[]>([])
   const [search, setSearch] = useState('')
@@ -36,9 +37,11 @@ export default function Proposals() {
 
   useEffect(() => {
     !async function () {
+      setLoading(true)
       const initialProposals = await fetchProposals({ term: '' })
       setInitialProposals(initialProposals)
       setProposals(initialProposals)
+      setLoading(false)
     }()
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
@@ -51,8 +54,10 @@ export default function Proposals() {
     }
 
     const timeout = setTimeout(async () => {
+      setLoading(true)
       const proposals = await fetchProposals({ term, filters })
       setProposals(proposals)
+      setLoading(false)
     }, 500)
 
     return () => clearTimeout(timeout)
@@ -102,6 +107,7 @@ export default function Proposals() {
           />
         </div>
       </div>
+      {loading && <div className="flex-center"><div className="loading w-28 h-28 border-8 border-t-primary" /></div>}
       <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
         {proposals.map((proposal) => <Card key={proposal.id} proposal={proposal} />)}
       </div>
