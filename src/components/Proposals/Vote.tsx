@@ -14,10 +14,11 @@ interface Props {
   id: string;
   address: string;
   abi: ethers.InterfaceAbi;
-  handleSuccess: (type: VoteType) => void;
+  handleSuccess: (type: VoteType, weight: bigint) => void;
 }
 
 export default function Vote({ id, address, abi, handleSuccess }: Props) {
+  const [weight, setWeight] = useState(BigInt(1))
   const [hasVoted, setHasVoted] = useState(false)
   const [voting, setVoting] = useState(false)
   const [voteType, setVoteType] = useState<VoteType>()
@@ -30,8 +31,12 @@ export default function Vote({ id, address, abi, handleSuccess }: Props) {
 
     !async function () {
       const contract = await getContract(address, abi)
-      const _hasVoted = await contract.hasVotedForProposal(window.ethereum.selectedAddress, id)
+      const [_hasVoted, _weight] = await Promise.all([
+        contract.hasVotedForProposal(window.ethereum.selectedAddress, id),
+        contract.weights(window.ethereum.selectedAddress)
+      ])
       setHasVoted(_hasVoted)
+      if (_weight > 0) setWeight(_weight)
     }()
   }, [isMetamaskConnected, abi, address, id, getContract])
 
@@ -47,7 +52,7 @@ export default function Vote({ id, address, abi, handleSuccess }: Props) {
       const tx = await contract.vote(id, type)
       const r = await tx.wait()
       setReceipt(r)
-      handleSuccess(type)
+      handleSuccess(type, weight)
     } catch (error: any) {
       alert(error.reason ?? error.message)
     }

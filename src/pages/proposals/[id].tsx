@@ -50,10 +50,10 @@ export default function Proposal() {
     // cleanup function to abort, this is rendered more than one time
   }, [address, getContract, id, navigate, searchParams])
 
-  const handleVoteSuccess = (type: VoteType) => {
+  const handleVoteSuccess = (type: VoteType, weight: bigint) => {
     if (!proposal) return
     const key = type === VoteType.Approval ? 'approvalCount' : type === VoteType.Disapproval ? 'disapprovalCount' : 'neutralCount'
-    setProposal({ ...proposal, [key]: proposal[key] + BigInt(1) })
+    setProposal({ ...proposal, [key]: proposal[key] + weight })
   }
 
   if (!proposal || !metadata || !abi) return <Placeholder />
