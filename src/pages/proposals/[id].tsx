@@ -2,10 +2,10 @@ import Time from '@/components/Proposals/Time.tsx'
 import { marked } from 'marked'
 import { useEffect, useState } from 'react'
 import Vote, { VoteType } from '@/components/Proposals/Vote'
-import { useMetamask } from '@/hooks/useMetamask'
 import { getArtifact } from '@/utils/supabase'
 import { ethers } from 'ethers'
 import { useSearchParams, useParams, useNavigate } from 'react-router-dom'
+import { POLYGON_MUMBAI_RPC_URL } from '@/config'
 
 interface Proposal {
   id: string;
@@ -31,7 +31,6 @@ export default function Proposal() {
   const [proposal, setProposal] = useState<Proposal>()
   const [metadata, setMetadata] = useState<Metadata>()
   const [abi, setAbi] = useState<ethers.InterfaceAbi>()
-  const { getContract } = useMetamask()
 
   useEffect(() => {
     const type = searchParams.get('type')
@@ -39,16 +38,14 @@ export default function Proposal() {
 
     !async function () {
       const { abi } = await getArtifact(type)
-      const contract = await getContract(address, abi)
+      const contract = new ethers.Contract(address, abi, new ethers.JsonRpcProvider(POLYGON_MUMBAI_RPC_URL))
       const proposal = (await contract.proposals(id)).toObject()
       const metadata: Metadata = await (await fetch(proposal.uri)).json()
       setAbi(abi)
       setProposal(proposal)
       setMetadata(metadata)
     }()
-
-    // cleanup function to abort, this is rendered more than one time
-  }, [address, getContract, id, navigate, searchParams])
+  }, [address, id, navigate, searchParams])
 
   const handleVoteSuccess = (type: VoteType, weight: bigint) => {
     if (!proposal) return

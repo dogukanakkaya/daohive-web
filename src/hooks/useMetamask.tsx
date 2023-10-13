@@ -1,6 +1,6 @@
-import { useContext, useEffect, useState, createContext } from 'react'
+import { useContext, useEffect, useState, createContext, useCallback } from 'react'
 import { ethers } from 'ethers'
-import { CHAIN_ID, POLYGON_MUMBAI_RPC_URL } from '@/config'
+import { CHAIN_ID } from '@/config'
 
 interface MetamaskContextProps {
   isMetamaskInstalled: boolean;
@@ -54,6 +54,8 @@ export function MetamaskProvider({ children }: { children: React.ReactNode }) {
             window.location.reload()
           }
         })
+
+        window.ethereum.on('accountsChanged', () => window.location.reload())
       }
     }()
   }, [])
@@ -105,14 +107,10 @@ export function MetamaskProvider({ children }: { children: React.ReactNode }) {
     }
   }
 
-  async function getContract(address: string, abi: ethers.InterfaceAbi) {
-    if (!isMetamaskConnected || !provider) {
-      const rpcProvider = new ethers.JsonRpcProvider(POLYGON_MUMBAI_RPC_URL)
-      return new ethers.Contract(address, abi, rpcProvider)
-    }
-
+  const getContract = useCallback(async (address: string, abi: ethers.InterfaceAbi) => {
+    if (!provider) throw new Error('Metamask provider not found.')
     return new ethers.Contract(address, abi, await provider.getSigner())
-  }
+  }, [provider])
 
   const value = {
     isMetamaskInstalled,
