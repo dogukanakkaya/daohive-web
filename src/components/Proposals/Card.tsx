@@ -5,7 +5,7 @@ export default function Card({ proposal }: { proposal: Proposal }) {
   return (
     <div className="bg-gray-50 dark:bg-proposal p-6 rounded-xl shadow space-y-4 transition-transform hover:scale-[1.025]">
       <div>
-        <img src={proposal.metadata.image} className="rounded-xl" alt={proposal.metadata.name} />
+        <img src={proposal.metadata.image} className="rounded-xl" alt={proposal.metadata.name} loading="lazy" />
       </div>
       <div>
         <h1>
