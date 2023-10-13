@@ -11,7 +11,8 @@ const features = Object.freeze([
     title: 'Add Proposals',
     content:
       'Empower your organization to shape its future with ease. Seamlessly submit and discuss proposals, allowing your members to voice their ideas and contribute to the collective vision. Embrace a dynamic platform that fosters innovation and inclusivity.',
-    image: '/feature-2.png'
+    image: '/feature-2.png',
+    hoverImage: '/feature-2-hover.png'
   },
   {
     title: 'Add Voters',
