@@ -17,6 +17,7 @@ export default function Header() {
         <Link className="flex items-center gap-4 mr-20" to="/">
           <img src="/logo.svg" width={60} alt="" />
           <h1 className="text-3xl font-semibold">daohive</h1>
+          <span className="px-2 py-0.5 bg-primary text-white rounded-md text-sm font-semibold">BETA</span>
         </Link>
         <input ref={inputRef} id="mobile-menu" className="hidden peer" type="checkbox" />
         <nav className="top-[theme('spacing.20')] left-0 h-[calc(100vh-theme('spacing.20'))] w-full absolute transition-transform -translate-x-full gap-8 bg-gradient-to-b from-header to-gray-100 dark:to-gray-900 md:static md:flex md:w-auto md:h-auto md:bg-none md:translate-x-0 peer-checked:translate-x-0">
