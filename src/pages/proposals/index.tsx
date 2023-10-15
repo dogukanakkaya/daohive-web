@@ -108,7 +108,7 @@ export default function Proposals() {
         </div>
       </div>
       {loading && <div className="flex-center"><div className="loading w-28 h-28 border-8 border-t-primary" /></div>}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:min-h-[calc(100vh-theme('spacing.80'))]">
         {proposals.map((proposal) => <Card key={proposal.id} proposal={proposal} />)}
       </div>
     </main>
