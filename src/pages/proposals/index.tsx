@@ -65,7 +65,7 @@ export default function Proposals() {
   }, [search, filters])
 
   return (
-    <main>
+    <main className="md:min-h-[calc(100vh-theme('spacing.64'))]">
       <div className="flex flex-col md:flex-row gap-8 md:gap-4 px-6 mb-8">
         <div className="relative flex-grow">
           <span className="absolute top-1/2 -translate-y-1/2 left-4">
@@ -108,7 +108,7 @@ export default function Proposals() {
         </div>
       </div>
       {loading && <div className="flex-center"><div className="loading w-28 h-28 border-8 border-t-primary" /></div>}
-      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6 md:min-h-[calc(100vh-theme('spacing.80'))]">
+      <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 px-6">
         {proposals.map((proposal) => <Card key={proposal.id} proposal={proposal} />)}
       </div>
     </main>

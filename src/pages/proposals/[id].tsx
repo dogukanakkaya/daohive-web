@@ -1,11 +1,15 @@
 import Time from '@/components/Proposals/Time.tsx'
 import { marked } from 'marked'
+import { markedEmoji } from 'marked-emoji'
 import { useEffect, useState } from 'react'
 import Vote, { VoteType } from '@/components/Proposals/Vote'
 import { getArtifact } from '@/utils/supabase'
 import { ethers } from 'ethers'
 import { useSearchParams, useParams, useNavigate } from 'react-router-dom'
 import { POLYGON_MUMBAI_RPC_URL } from '@/config'
+import emojis from '@/assets/emojis.json'
+
+marked.use(markedEmoji({ emojis, unicode: true }))
 
 interface Proposal {
   id: string;
@@ -62,7 +66,7 @@ export default function Proposal() {
         <p className="text-lg text-gray-500">{metadata.description}</p>
       </div>
       <div>
-        <img className="w-full max-h-[800px] object-cover rounded-xl" src={metadata.image} alt={metadata.name} />
+        <img className="w-full max-h-[800px] object-contain rounded-xl" src={metadata.image} alt={metadata.name} />
       </div>
       <div className="flex flex-col lg:flex-row gap-4 items-center justify-between">
         <ul className="flex gap-4">

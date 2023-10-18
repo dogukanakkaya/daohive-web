@@ -4,9 +4,7 @@ import { Proposal } from '@/pages/proposals'
 export default function Card({ proposal }: { proposal: Proposal }) {
   return (
     <div className="bg-gray-50 dark:bg-proposal p-6 rounded-xl shadow space-y-4 transition-transform hover:scale-[1.025]">
-      <div>
-        <img src={proposal.metadata.image} className="rounded-xl" alt={proposal.metadata.name} loading="lazy" />
-      </div>
+      <img src={proposal.metadata.image} className="rounded-xl w-full h-[400px] object-cover" alt={proposal.metadata.name} loading="lazy" />
       <div>
         <h1>
           <a href={`/${proposal.address}/${proposal.id}?type=${proposal.type}`} className="text-2xl dark:text-white font-semibold">{proposal.metadata.name}</a>
