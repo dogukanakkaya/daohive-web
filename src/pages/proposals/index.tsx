@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react'
 import Card from '@/components/Proposals/Card.tsx'
 import { API_URL } from '@/config'
+import { Helmet } from 'react-helmet-async'
 
 export interface Proposal {
   id: string;
@@ -66,6 +67,9 @@ export default function Proposals() {
 
   return (
     <main className="md:min-h-[calc(100vh-theme('spacing.64'))]">
+      <Helmet>
+        <title>Proposals</title>
+      </Helmet>
       <div className="flex flex-col md:flex-row gap-8 md:gap-4 px-6 mb-8">
         <div className="relative flex-grow">
           <span className="absolute top-1/2 -translate-y-1/2 left-4">

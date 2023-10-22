@@ -1,3 +1,4 @@
+import { Helmet } from 'react-helmet-async'
 import { Link, NavLink, Outlet, useParams } from 'react-router-dom'
 
 const links = Object.freeze([
@@ -60,6 +61,9 @@ export default function Docs() {
 
   return (
     <div className="px-6">
+      <Helmet>
+        <title>Docs</title>
+      </Helmet>
       <div className="md:grid grid-cols-6 gap-8">
         <div className="hidden md:block col-span-1">
           <div className="sticky top-28">

@@ -8,6 +8,7 @@ import { ethers } from 'ethers'
 import { useSearchParams, useParams, useNavigate } from 'react-router-dom'
 import { POLYGON_MUMBAI_RPC_URL } from '@/config'
 import emojis from '@/assets/emojis.json'
+import { Helmet } from 'react-helmet-async'
 
 marked.use(markedEmoji({ emojis, unicode: true }))
 
@@ -61,6 +62,13 @@ export default function Proposal() {
 
   return (
     <main className="px-6 space-y-4">
+      <Helmet>
+        <title>{metadata.name}</title>
+        <meta name="description" content={metadata.description} />
+        <meta property="og:title" content={metadata.name} />
+        <meta property="og:description" content={metadata.description} />
+        <meta property="og:image" content={metadata.image} />
+      </Helmet>
       <div className="text-center">
         <h1 className="text-3xl md:text-5xl font-bold mb-2">{metadata.name}</h1>
         <p className="text-lg text-gray-500">{metadata.description}</p>
