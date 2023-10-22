@@ -98,7 +98,7 @@ export default function Proposal() {
         </ul>
       </div>
       <div className="flex items-center justify-center">
-        <div dangerouslySetInnerHTML={{ __html: marked.parse(metadata.content) }} className="w-full md:w-2/3 max-w-none my-10 prose prose-headings:border-b dark:prose-headings:border-gray-800 prose-headings:pb-3 dark:prose-invert prose-a:text-blue-600 hover:prose-a:text-blue-500" />
+        <div dangerouslySetInnerHTML={{ __html: marked.parse(metadata.content) }} className="w-full md:w-2/3 max-w-none my-10 prose prose-h1:border-b prose-h2:border-b dark:prose-headings:border-gray-800 prose-headings:pb-3 dark:prose-invert prose-a:text-blue-600 hover:prose-a:text-blue-500" />
       </div>
     </main>
   )
