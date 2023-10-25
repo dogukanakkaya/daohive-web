@@ -1,4 +1,4 @@
-// import Button, { Variant } from "@/components/Button.tsx";
+import Button, { Variant } from '@/components/Button.tsx'
 import { PLATFORM_URL } from '@/config'
 
 export default function Journey() {
@@ -12,11 +12,11 @@ export default function Journey() {
       </div>
       <div className="flex justify-center gap-4 mt-8">
         <a href={PLATFORM_URL} target="_blank">
-          {/* <Button className="w-max">
+          <Button className="w-max">
             Use Platform
-          </Button> */}
+          </Button>
         </a>
-        {/* <Button variant={Variant.Secondary} className="w-max">Documentation</Button> */}
+        <Button variant={Variant.Secondary} className="w-max">Documentation</Button>
       </div>
     </section>
   )
