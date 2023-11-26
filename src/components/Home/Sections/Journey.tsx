@@ -1,5 +1,6 @@
 import Button, { Variant } from '@/components/Button.tsx'
 import { PLATFORM_URL } from '@/config'
+import { Link } from 'react-router-dom'
 
 export default function Journey() {
   return (
@@ -16,7 +17,7 @@ export default function Journey() {
             Use Platform
           </Button>
         </a>
-        <Button variant={Variant.Secondary} className="w-max">Documentation</Button>
+        <Link to="/docs/introduction"><Button variant={Variant.Secondary} className="w-max">Documentation</Button></Link>
       </div>
     </section>
   )
